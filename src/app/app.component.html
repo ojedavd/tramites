@@ -1,0 +1,27 @@
+<div>
+    <h1>Sistema de Pases Internos</h1>
+      <table border="1" *ngIf="hayRegistros(); else sinarticulos">
+        <tr>
+          <td>Numero</td><td>Asunto</td><td>Fecha</td><td>Borrar</td><td>Seleccionar</td>
+        </tr>
+        <tr *ngFor="let exp of expedientes">
+          <td>{{exp.numero}}</td>
+          <td>{{exp.asunto}}</td>
+          <td>{{exp.fecha}}</td>
+          <td><button (click)="baja(exp.id)">Borrar</button></td>
+          <td><button (click)="seleccionar(exp.id)">Seleccionar</button></td>        
+        </tr>
+      </table>
+      <ng-template #sinarticulos><p>No hay articulos.</p></ng-template>
+      <div>
+        <p>
+          Numero:<input type="number" [(ngModel)]="exp.numero" />
+        </p>
+        <p>
+          Asunto:<input type="text" [(ngModel)]="exp.asunto" />
+        </p>            
+        <p><button (click)="alta()">Agregar</button>
+        <button (click)="modificacion()">Modificar</button></p>
+      </div>  
+  </div>
+
